@@ -1,53 +1,16 @@
 import React from 'react';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Image, Text, View } from 'react-native';
 import { DrawerItemList } from '@react-navigation/drawer';
 import { FontAwesome5, MaterialCommunityIcons, SimpleLineIcons } from '@expo/vector-icons';
-import Calculator from './Calculator';
 import Home from './Home';
-import Contact from './Contact';
+import Compass from './Compass';
+import Location_screen from './Location_screen';
+import StepCounter from './StepCounter';
 
-const Tab = createBottomTabNavigator();
+
 const Drawer = createDrawerNavigator();
-
-function TabNavigator() {
-    return (
-        <Tab.Navigator>
-            <Tab.Screen
-                name="Home"
-                component={Home}
-                options={{
-                    tabBarLabel: 'Home',
-                    tabBarIcon: ({ color, size }) => (
-                        <SimpleLineIcons name="home" size={size} color={color} />
-                    ),
-                }}
-            />
-            <Tab.Screen
-                name="Calculator"
-                component={Calculator}
-                options={{
-                    tabBarLabel: 'Calculator',
-                    tabBarIcon: ({ color, size }) => (
-                        <FontAwesome5 name="calculator" size={size} color={color} />
-                    ),
-                }}
-            />
-            <Tab.Screen
-                name="Contact"
-                component={Contact}
-                options={{
-                    tabBarLabel: 'Contact',
-                    tabBarIcon: ({ color, size }) => (
-                        <MaterialCommunityIcons name="message-alert-outline" size={size} color={color} />
-                    ),
-                }}
-            />
-        </Tab.Navigator>
-    );
-}
 
 function DrawerContent(props) {
     return (
@@ -57,7 +20,7 @@ function DrawerContent(props) {
                     source={require('../assets/user.jpeg')}
                     style={{ marginTop: 15, height: 50, width: 50, borderRadius: 100 }}
                 />
-                <Text style={{ fontSize: 15, marginVertical: 6, fontWeight: 'bold', color: '#808088' }}>
+                <Text style={{ fontSize: 15, marginVertical: 6, fontWeight: 'bold', color: '#7EA1FF' }}>
                     Ndagijima Pierre
                 </Text>
             </View>
@@ -70,7 +33,7 @@ function DrawerNav() {
     return (
         <Drawer.Navigator
             drawerContent={props => <DrawerContent {...props} />}
-            drawerStyle={{ width: '60%', backgroundColor: '#lightgreen' }}
+            drawerStyle={{ width: '60%', backgroundColor: '#7EA1FF' }}
             screenOptions={{
                 headerStyle: { backgroundColor: 'blue' },
                 headerTintColor: '#fff',
@@ -82,28 +45,41 @@ function DrawerNav() {
                 name="Home"
                 options={{
                     drawerLabel: 'Home',
-                    drawerIcon: () => <SimpleLineIcons name="home" size={20} color="#808080" />,
+                    drawerIcon: () => <SimpleLineIcons name="home" size={20} color="#7EA1FF" />,
                 }}
-                component={TabNavigator}
+                component={Home}
             />
             <Drawer.Screen
-                name="Calculator"
-                options={{
-                    drawerLabel: 'Calculator',
-                    drawerIcon: () => <FontAwesome5 name="calculator" size={20} color="#808080" />,
-                }}
-                component={Calculator}
-            />
+  name="Location_screen"
+  options={{
+    drawerLabel: 'Location_screen',
+    drawerIcon: () => <FontAwesome5 name="map-marker-alt" size={20} color="#7EA1FF" />, // Adjust icon name if needed
+  }}
+  component={Location_screen}
+/>
+
             <Drawer.Screen
-                name="Contact"
+                name="Compass"
                 options={{
-                    drawerLabel: 'Contacts Us',
+                    drawerLabel: 'Compass',
                     drawerIcon: () => (
-                        <MaterialCommunityIcons name="message-alert-outline" size={22} color="#808080" />
+                        <MaterialCommunityIcons name="compass-outline" size={22} color="#7EA1FF" />
                     ),
                 }}
-                component={Contact}
+                component={Compass}
             />
+
+            <Drawer.Screen
+                name="StepCounter"
+                options={{
+                    drawerLabel: 'StepCounter',
+                    drawerIcon: () => (
+                        <MaterialCommunityIcons name="walk" size={22} color="#7EA1FF" />
+                    ),
+                }}
+                component={StepCounter}
+            />
+
         </Drawer.Navigator>
     );
 }

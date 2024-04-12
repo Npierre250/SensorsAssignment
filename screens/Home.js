@@ -5,7 +5,7 @@ const Home = () => {
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Welcome to My App</Text>
-      <Text style={styles.subtitle}>We are here for you.</Text>
+      <Text style={styles.subtitle}>Explore about sensors.</Text>
     </View>
   );
 };
@@ -15,16 +15,16 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#fff',
+    backgroundColor: '#7EA1FF',
   },
   title: {
-    fontSize: 24,
+    fontSize: 30,
     fontWeight: 'bold',
     marginBottom: 20,
   },
   subtitle: {
-    fontSize: 18,
-    color: '#666',
+    fontSize: 20,
+    color: '#fff',
   },
 });
 
